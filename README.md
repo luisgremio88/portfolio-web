@@ -1,57 +1,55 @@
-# Sistema institucional e administrativo - Portfolio
+# Sistema web institucional, area restrita e painel administrativo
 
-Este repositorio apresenta uma versao demonstrativa de um sistema institucional completo, com site publico, area restrita, painel administrativo, backend PHP e modulo Java preparado para servicos e integracoes.
+Portfolio tecnico de um sistema web completo, com site publico, area restrita, painel administrativo, backend PHP, modulo Java e preocupacao com LGPD desde a publicacao.
 
-> Importante: este projeto de portfolio nao contem dados reais de empresa, clientes, tabelionatos, documentos, boletos, recibos, certidoes, chaves de API ou credenciais. Os nomes e fluxos descritos aqui sao demonstrativos.
+> Esta versao publica e demonstrativa. Ela nao contem dados reais, credenciais, documentos emitidos, boletos, recibos, certidoes, dumps de banco ou arquivos internos da empresa.
 
-## Objetivo
+## Visao geral
 
-Mostrar capacidade de desenvolver e organizar um sistema web completo, incluindo:
+O projeto representa uma plataforma institucional com operacoes internas e area autenticada. A proposta e demonstrar dominio de ponta a ponta: interface, rotas, integracao com backend, emissao documental, organizacao administrativa e planejamento de seguranca.
 
-- home institucional moderna e responsiva;
-- area restrita para usuarios autenticados;
-- painel administrativo;
-- backend PHP para rotinas administrativas e emissao de documentos;
-- modulo Java para APIs, servicos de associado e integracoes;
-- gestao de conteudos institucionais;
-- busca documental/testamento em fluxo guiado;
-- geracao demonstrativa de boleto, recibo e certidao;
-- documentacao tecnica;
-- preocupacao com seguranca, LGPD e separacao de dados sensiveis.
+## Stack principal
 
-## Tecnologias
+| Camada | Tecnologias |
+| --- | --- |
+| Frontend | React 17, React Router, Axios |
+| Backend legado/operacional | PHP, Template Power, FPDF |
+| Backend de servicos | Java |
+| Banco de dados | MySQL |
+| Documentos | Geracao demonstrativa de boleto, recibo e certidao |
+| Seguranca | Separacao de ambiente, `.env.example`, checklist LGPD, roadmap de hardening |
 
-- React 17
-- React Router
-- Axios
-- PHP
-- Java
-- MySQL
-- Template Power
-- FPDF
-- Integracao preparada para APIs externas
+## Destaques tecnicos
+
+- Site publico responsivo com conteudo institucional, noticias, eventos, galeria, videos e links uteis.
+- Area restrita para associados/tabelionatos com rotas protegidas e fluxo operacional.
+- Painel administrativo para gestao de conteudos, consultas e documentos.
+- Fluxo de busca documental/testamento com preenchimento guiado.
+- Geracao demonstrativa de boleto, recibo e certidao.
+- Backend PHP para rotinas administrativas, templates, endpoints e PDFs.
+- Modulo Java planejado/usado como camada de servicos para area restrita, financeiro e integracoes.
+- Documentacao de seguranca com foco em LGPD e publicacao segura no GitHub.
 
 ## Arquitetura resumida
 
 ```text
-Site publico / Area restrita
-        |
-        v
-React + Axios
-        |
-        +--> APIs PHP: autenticacao, conteudo, busca documental, PDFs
-        |
-        +--> APIs Java: servicos de associado, financeiro e integracoes futuras
-        |
-        v
-MySQL / provedores externos em ambiente de producao
+Usuario publico
+      |
+      v
+Site React --------------+
+                         |
+Area restrita React -----+----> APIs PHP ----> MySQL
+                         |         |
+Painel administrativo ---+         +----> PDFs / boletos / recibos / certidoes
+                         |
+                         +----> APIs Java ----> servicos de associado, financeiro e integracoes
 ```
 
-## Principais areas do sistema
+## Modulos do sistema
 
 ### Site publico
 
-Interface institucional com paginas de conteudo, noticias, eventos, galeria, videos, links uteis, contato e acesso a area restrita.
+Home institucional, paginas de conteudo, noticias, eventos, galeria, videos, contato, links uteis e acesso para usuarios autenticados.
 
 ### Area restrita
 
@@ -59,27 +57,47 @@ Ambiente autenticado para associados/tabelionatos, com dados cadastrais, consult
 
 ### Painel administrativo
 
-Area de gestao interna para usuarios administrativos, com controle de conteudos, consultas, documentos e emissao de arquivos em PDF.
-
-### Backend PHP
-
-Responsavel por rotinas existentes do sistema, templates administrativos, endpoints web, emissao de PDFs, recibos, certidoes e comunicacao com banco de dados.
-
-### Modulo Java
-
-Camada preparada para evoluir servicos de associado, financeiro, consultas e integracoes. A ideia e separar regras de negocio mais novas em APIs, facilitando manutencao, escalabilidade e testes.
+Gestao interna para administradores e operadores, com controle de conteudo, consultas, documentos e emissao de arquivos PDF.
 
 ### Busca documental
 
-Fluxo demonstrativo onde o usuario preenche dados da busca, confirma responsabilidade, gera boleto e, quando permitido, visualiza recibo e certidao.
+Fluxo demonstrativo no qual o usuario preenche os dados da busca, confirma responsabilidade, gera boleto e, quando autorizado, visualiza recibo e certidao.
+
+### Backend PHP
+
+Responsavel por rotinas existentes do sistema, endpoints web, templates administrativos, comunicacao com MySQL e geracao de documentos em PDF.
+
+### Modulo Java
+
+Camada de servicos para evoluir regras de negocio, APIs de associado, financeiro e integracoes. Em producao, essa camada pode receber validacoes, DTOs, Swagger/OpenAPI, testes e health checks.
 
 ## Seguranca e LGPD
 
-Esta versao foi pensada para portfolio, por isso nao inclui dados reais. A estrategia de publicacao segura esta documentada em:
+A versao publica foi preparada para demonstrar o projeto sem expor informacoes sensiveis. A estrategia adotada:
 
-- [docs/SEGURANCA_LGPD.md](docs/SEGURANCA_LGPD.md)
-- [docs/CHECKLIST_PUBLICACAO_GITHUB.md](docs/CHECKLIST_PUBLICACAO_GITHUB.md)
-- [docs/ROADMAP_PRODUCAO.md](docs/ROADMAP_PRODUCAO.md)
+- dados reais removidos;
+- arquivos `.env` reais fora do repositorio;
+- `.env.example` apenas com valores ficticios;
+- `.gitignore` bloqueando builds, documentos, backups, logs e credenciais;
+- documentacao explicando o que nao deve ser publicado;
+- roadmap de melhorias para ambiente de producao.
+
+Documentos:
+
+- [Seguranca e LGPD](docs/SEGURANCA_LGPD.md)
+- [Checklist de publicacao no GitHub](docs/CHECKLIST_PUBLICACAO_GITHUB.md)
+- [Roadmap de producao](docs/ROADMAP_PRODUCAO.md)
+
+## O que falta para producao
+
+- Revisao completa de autenticacao, sessoes e permissoes.
+- CSRF, rate limit e validacoes centralizadas.
+- Logs de auditoria para acoes sensiveis.
+- Testes automatizados para fluxos criticos.
+- Documentacao formal das APIs Java com Swagger/OpenAPI.
+- Separacao de ambientes de desenvolvimento, homologacao e producao.
+- Deploy automatizado sem copiar arquivos sensiveis.
+- Politica de backup, retencao e descarte de documentos.
 
 ## Como rodar a parte React
 
@@ -90,13 +108,13 @@ npm start
 
 ## Como rodar a parte PHP
 
-Coloque o projeto em um ambiente local com Apache/PHP, como XAMPP, e configure as variaveis de ambiente usando `.env.example` como base.
+Use um ambiente local com Apache/PHP, como XAMPP, e configure as variaveis de ambiente usando `.env.example` como base.
 
 ## Como rodar a parte Java
 
 O modulo Java deve ser configurado em ambiente separado, com variaveis de ambiente proprias para banco, portas e integracoes. Nesta versao publica, a documentacao descreve a arquitetura sem publicar credenciais, dados reais ou endpoints sensiveis.
 
-## Status do projeto
+## Observacao
 
-Projeto em evolucao para demonstracao profissional. A versao de producao exigiria reforcos adicionais de seguranca, auditoria, logs, controle de permissoes, testes automatizados e integracao real com provedores externos.
+Este repositorio foi montado como portfolio publico. O objetivo e mostrar arquitetura, escopo funcional, criterios de seguranca e maturidade de desenvolvimento sem comprometer dados protegidos por LGPD.
 
