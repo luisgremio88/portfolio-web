@@ -1,21 +1,23 @@
 # Sistema institucional e administrativo - Portfolio
 
-Este repositório apresenta uma versão demonstrativa de um sistema institucional completo, com site público, área restrita, painel administrativo e fluxo de busca documental com geração de boleto, recibo e certidão em modo de demonstração.
+Este repositorio apresenta uma versao demonstrativa de um sistema institucional completo, com site publico, area restrita, painel administrativo, backend PHP e modulo Java preparado para servicos e integracoes.
 
-> Importante: este projeto de portfolio não contém dados reais de empresa, clientes, tabelionatos, documentos, boletos, recibos, certidões, chaves de API ou credenciais. Os nomes e fluxos descritos aqui são demonstrativos.
+> Importante: este projeto de portfolio nao contem dados reais de empresa, clientes, tabelionatos, documentos, boletos, recibos, certidoes, chaves de API ou credenciais. Os nomes e fluxos descritos aqui sao demonstrativos.
 
 ## Objetivo
 
 Mostrar capacidade de desenvolver e organizar um sistema web completo, incluindo:
 
 - home institucional moderna e responsiva;
-- área restrita para usuários autenticados;
+- area restrita para usuarios autenticados;
 - painel administrativo;
-- gestão de conteúdos institucionais;
+- backend PHP para rotinas administrativas e emissao de documentos;
+- modulo Java para APIs, servicos de associado e integracoes;
+- gestao de conteudos institucionais;
 - busca documental/testamento em fluxo guiado;
-- geração demonstrativa de boleto, recibo e certidão;
-- documentação técnica;
-- preocupação com segurança, LGPD e separação de dados sensíveis.
+- geracao demonstrativa de boleto, recibo e certidao;
+- documentacao tecnica;
+- preocupacao com seguranca, LGPD e separacao de dados sensiveis.
 
 ## Tecnologias
 
@@ -23,32 +25,57 @@ Mostrar capacidade de desenvolver e organizar um sistema web completo, incluindo
 - React Router
 - Axios
 - PHP
+- Java
 - MySQL
 - Template Power
 - FPDF
-- Integração preparada para APIs externas
+- Integracao preparada para APIs externas
 
-## Principais áreas do sistema
+## Arquitetura resumida
 
-### Site público
+```text
+Site publico / Area restrita
+        |
+        v
+React + Axios
+        |
+        +--> APIs PHP: autenticacao, conteudo, busca documental, PDFs
+        |
+        +--> APIs Java: servicos de associado, financeiro e integracoes futuras
+        |
+        v
+MySQL / provedores externos em ambiente de producao
+```
 
-Interface institucional com páginas de conteúdo, notícias, eventos, galeria, vídeos, links úteis, contato e acesso à área restrita.
+## Principais areas do sistema
 
-### Área restrita
+### Site publico
+
+Interface institucional com paginas de conteudo, noticias, eventos, galeria, videos, links uteis, contato e acesso a area restrita.
+
+### Area restrita
 
 Ambiente autenticado para associados/tabelionatos, com dados cadastrais, consultas, financeiro e fluxo de busca documental.
 
 ### Painel administrativo
 
-Área de gestão interna para usuários administrativos, com controle de conteúdos, consultas, documentos e emissão de arquivos em PDF.
+Area de gestao interna para usuarios administrativos, com controle de conteudos, consultas, documentos e emissao de arquivos em PDF.
+
+### Backend PHP
+
+Responsavel por rotinas existentes do sistema, templates administrativos, endpoints web, emissao de PDFs, recibos, certidoes e comunicacao com banco de dados.
+
+### Modulo Java
+
+Camada preparada para evoluir servicos de associado, financeiro, consultas e integracoes. A ideia e separar regras de negocio mais novas em APIs, facilitando manutencao, escalabilidade e testes.
 
 ### Busca documental
 
-Fluxo demonstrativo onde o usuário preenche dados da busca, confirma responsabilidade, gera boleto e, quando permitido, visualiza recibo e certidão.
+Fluxo demonstrativo onde o usuario preenche dados da busca, confirma responsabilidade, gera boleto e, quando permitido, visualiza recibo e certidao.
 
-## Segurança e LGPD
+## Seguranca e LGPD
 
-Esta versão foi pensada para portfolio, por isso não inclui dados reais. A estratégia de publicação segura está documentada em:
+Esta versao foi pensada para portfolio, por isso nao inclui dados reais. A estrategia de publicacao segura esta documentada em:
 
 - [docs/SEGURANCA_LGPD.md](docs/SEGURANCA_LGPD.md)
 - [docs/CHECKLIST_PUBLICACAO_GITHUB.md](docs/CHECKLIST_PUBLICACAO_GITHUB.md)
@@ -63,9 +90,13 @@ npm start
 
 ## Como rodar a parte PHP
 
-Coloque o projeto em um ambiente local com Apache/PHP, como XAMPP, e configure as variáveis de ambiente usando `.env.example` como base.
+Coloque o projeto em um ambiente local com Apache/PHP, como XAMPP, e configure as variaveis de ambiente usando `.env.example` como base.
+
+## Como rodar a parte Java
+
+O modulo Java deve ser configurado em ambiente separado, com variaveis de ambiente proprias para banco, portas e integracoes. Nesta versao publica, a documentacao descreve a arquitetura sem publicar credenciais, dados reais ou endpoints sensiveis.
 
 ## Status do projeto
 
-Projeto em evolução para demonstração profissional. A versão de produção exigiria reforços adicionais de segurança, auditoria, logs, controle de permissões e integração real com provedores externos.
+Projeto em evolucao para demonstracao profissional. A versao de producao exigiria reforcos adicionais de seguranca, auditoria, logs, controle de permissoes, testes automatizados e integracao real com provedores externos.
 
