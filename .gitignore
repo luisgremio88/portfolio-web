@@ -1,0 +1,47 @@
+# Dependencias e builds
+node_modules/
+build/
+dist/
+vendor/
+
+# Variaveis de ambiente e credenciais
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# Banco, backups e dados reais
+*.sql
+*.sqlite
+*.db
+*.bak
+*.backup
+*.zip
+*.rar
+*.7z
+backups/
+backup/
+uploads/
+storage/
+logs/
+tmp/
+.tmp/
+
+# Documentos gerados ou recebidos
+admin/buscas/
+buscas/
+boletos/
+recibos/
+certidoes/
+*.ret
+*.rem
+
+# Arquivos locais do sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
